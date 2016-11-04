@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>音乐播放器</title>
+<style>
+.banner{background: url("images/82fLDu4.jpg") no-repeat;width:800px; height:550px;margin:250px 150px;position:relative;}
+.Player{width:450px;height:291px;top:18%;left:20%;background: #692a3b;position: absolute;border-radius: 3%}
+.songs{width:450px;height: 100px;background:#070707;border-radius: 3%;position: absolute;}
+.songs a{display: block;position: absolute;}
+#songList{position: absolute;left: 100px;top:35px;color: #5e5fFF;font-size:22px;font-weight: bolder;}
+#a1{left:42px;top:30px;}
+#a2{left:42px;top:57px;}
+#a3{right:42px;top:30px;}
+#a4{right:42px;top:57px;}
+.control{width:450px;height: 190px;position: relative;}
+.control a{display: block;position: absolute;}
+#a01{left:117px;top:183px;}
+#a02{left:217px;top:183px;}
+#a03{right:117px;top:183px;}
+#a04{left:80px;top:244px;}
+#a05{right:80px;top:244px;}
+#times{position: absolute;left:181px;top:120px;font-size: 26px;color: #98727d}
+input[type="range"]{width:235px;position: absolute;left:100px;top:243px;}
+</style>
+<script src="js/jquery-1.12.0.js"></script>
+</head>
+<body>
+	<div class="banner">
+	<audio src="video/Lovestoned - Bye Bye Bye.mp3" id="songO">您的浏览器不支持视频播放
+	</audio>
+		<div class="Player">
+			<div class="songs">
+			<span id="songList"><marquee behavior="" direction="" id="title">You Are The One</marquee></span> 
+			<a href="javascript:void(0)" id="a1"><img src="images/AQAxRxS.png" alt=""></a>
+			<a href="#" id="a2"><img src="images/E09T8tf.png" alt=""></a>
+			<a href="#" id="a3"><img src="images/338F8MX.png" alt=""></a>
+			<a href="#" id="a4"><img src="images/PGIC6ME.png" alt=""></a>
+			</div>
+		<div class="control">
+			<span id="times">00:00</span>
+			<a href="javascript:void(0)" id="a01"><img src="images/LIqj0nr.png" alt=""></a>
+			<a href="javascript:void(0)" id="a02"><img id="pP" src="images/xlBv5aR.png" alt=""></a>
+			<a href="javascript:void(0)" id="a03"><img src="images/RIqj0nr.png" alt=""></a>
+			<a href="javascript:void(0)" id="a04"><img src="images/3iirf2f.png" alt=""></a>
+			<a href="javascript:void(0)" id="a05"><img src="images/qqdoddi.png" alt=""></a>
+			<span class="rag"><input type="range" id="rag"></span>
+		</div>
+		</div>
+	
+	</div>
+	<script>
+		var arr=["Lovestoned - Bye Bye Bye.mp3","Virginia To Vegas - Colourful.mp3","2NE1 - Come Back Home .mp3","Czarina - I Miss You.mp3","WINNER - Don't flirt.mp3","WINNER - immature.mp3"];
+
+		var oAudio=document.getElementById("songO");
+		var Player=document.getElementById("a02");
+		var pP=document.getElementById("pP");
+		var prev=document.getElementById("a01");
+		var next=document.getElementById("a03");
+		var times=document.getElementById("times");
+		var oI1=times.getElementsByTagName("i");
+		var rag=document.getElementById('rag');
+		var volumeDe=document.getElementById("a04");
+		var volumeAd=document.getElementById("a05");
+		var songsTitle=document.getElementById("title");
+		var i=0
+		if(oAudio.paused){
+			var timer=setInterval(function(){
+					i++;
+					var str=""
+					var minute=Math.floor((oAudio.currentTime / 60)) %60;
+					if(minute<10){
+						str+="0";
+						str+=minute		
+					}
+					str+=":"
+					// console.log(str+=":")
+					var second=(parseInt(oAudio.currentTime))%60;
+					if(second<10){
+						str+="0";	
+					}
+					str+=second
+					console.log(str)
+					times.innerHTML=str;
+					// console.log("秒"+(parseInt(oAudio.currentTime))%60);
+					// console.log("分"+Math.floor((oAudio.currentTime / 60)) %60);				
+				},10);
+			times.innerHTML="00:00";
+			pP.src="images/xlBv5aR.png";
+
+		}
+		
+
+		/*
+		else if(!(oAudio.paused)){
+			times.innerHTML="00:00";
+			pP.src="images/xlBv5aR.png";
+		}
+		*/
+		//播放、暂停
+		Player.addEventListener('click',function(){
+			if(oAudio.paused){
+				oAudio.play();
+				pP.src="images/lIhwduj.png";
+			}
+			else {
+				oAudio.pause();
+				pP.src="images/xlBv5aR.png";
+			}	
+		})
+		//下一首
+		var n=-1
+		next.addEventListener('click',function(){
+			console.log(n)
+			if(n>=arr.length-1){
+				n=-1
+			}
+			n++;
+			oAudio.autoplay=true;
+			pP.src="images/lIhwduj.png";
+			oAudio.src="video/"+arr[n]+"";
+			songsTitle.innerHTML=arr[n];
+			// console.log(n,arr.length)	
+		})		
+		//上一首
+		prev.addEventListener('click',function(){
+			if(n<=0){
+				n=5
+			}else{
+				n--
+			}
+			console.log(n)
+			oAudio.autoplay=true;
+			pP.src="images/lIhwduj.png";
+			oAudio.src="video/"+arr[n]+"";
+			songsTitle.innerHTML=arr[n];
+			// console.log(n,arr.length)
+			
+		})	
+		//音量
+		rag.addEventListener('mousemove',function(){
+			 oAudio.volume=(this.value*0.01);
+			// console.log(this.value*0.01)
+		})		
+		//左减
+		volumeDe.addEventListener('click',function(){
+			rag.value=0;
+			 oAudio.volume=(rag.value);
+		})
+		//右加
+		volumeAd.addEventListener('click',function(){
+			var voiceN=rag.value;
+			voiceN++;
+			rag.value=voiceN;
+			if(voiceN==100){
+			 	oAudio.volume=1;
+			 	// console.log(oAudio.volume)
+			 }else{
+			// console.log(voiceN)
+			 oAudio.volume=(voiceN*0.01);
+			 console.log(oAudio.volume)
+			}
+		})
+
+	</script>
+</body>
+</html>

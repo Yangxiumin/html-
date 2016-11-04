@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>音乐盒子</title>
+</head>
+<body>
+	<h1 id="musicName"></h1>
+	<p id="authorName"></p>
+	<progress></progress>
+	<p id="currentTime"></p>
+	<p id="control">
+		<a href="javascript:;" id="btnPrev">上一首</a>
+		<a href="javascript:;" id="btnPlay">播放</a>
+		<a href="javascript:;" id="btnPause">暂停</a>
+		<a href="javascript:;" id="btnNext">下一首</a>
+		<a href="" class="btn"></a>
+	</p>
+	<p id="volumeControl">
+		<a href="javascript:;" id="btnPlay">静音</a>
+		<input type="range" min="0" max="1" value="0.5" step="0.01">
+		<a href="javascript:;" id="btnPlay">解除静音</a>
+	</p>
+	<audio src="" id="audio"></audio>
+
+	<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+	<script>
+		var musicList = [
+			{name:'You Are The One',author:"C21",url:"music/C21 - You Are The One.mp3"},
+			{name:'My Heart Will Go On',author:"Céline Dion",url:"music/Céline Dion - My Heart Will Go On.mp3"},
+			{name:'Take Me Higher',author:"Inna",url:"music/Inna - Take Me Higher.mp3"},
+			{name:'Inna',author:"Tell Me",url:"music/Inna - Tell Me.mp3"}
+		];
+		/*function Player(){
+
+		}
+		Player.prototype = {
+
+		}
+*/	
+		var Player = {
+			audio:null,
+			init:function(){
+				this.audio = $("#audio")[0];
+				this.$control = $("#control");
+				this.$musicName = $("#musicName");
+				this.$authorName = $("#authorName");
+				this.$btnPlay = $("#btnPlay");
+				this.$btnPause = $("#btnPause").hide();
+				this.bindEvents();
+			},
+			bindEvents:function(){
+				var _this = this;
+				this.$control.on('click', '#btnPrev', function(event) {
+					event.preventDefault();
+					
+				})
+				.on('click', '#btnPlay', function(event) {
+					event.preventDefault();
+					_this.play();
+				}).on('click', '#btnPause', function(event) {
+					event.preventDefault();
+					_this.pause();
+				}).on('click', '#btnNext', function(event) {
+					event.preventDefault();
+					/* Act on the event */
+				});
+			},
+
+			//音乐播放方法
+			play:function(){
+				var obj = musicList[0];
+				this.audio.src = obj.url;
+				this.audio.play();
+				this.$authorName.html(obj.author);
+				this.$musicName.html(obj.name);
+
+				this.$btnPlay.hide();
+				this.$btnPause.show();
+			},
+
+			//音乐暂停方法
+			pause:function(){
+				this.audio.pause();
+				this.$btnPlay.show();
+				this.$btnPause.hide();
+			}
+		}
+
+		$(document).ready(function($) {
+			Player.init();
+		});
+	</script>
+</body>
+</html>

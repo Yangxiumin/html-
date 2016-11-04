@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hw1</title>
+<style>
+	/*安卓*/
+	.ad{width:222px;height: 111px;margin-left:100px;margin-bottom:8px;background: #a5c644;border-top-left-radius:110px;border-top-right-radius:110px}
+	.eyeL{width:20px;height: 20px;border-radius: 50%;background: white;position: absolute;left:158px;top:60px;}
+	.eyeR{width:20px;height: 20px;border-radius: 50%;background: white;position: absolute;left:266px;top:60px;}
+	.body{width:222px;height: 184px;background: #a5c644;margin-left:100px;border-bottom-left-radius:30px;border-bottom-right-radius:30px;position:absolute;}
+	.topL{width:6px;height:40px;border-top-left-radius: 3px;border-top-right-radius: 3px;position: absolute;left:78px;top:-126px;background:#a5c644; }
+	.topR{width:6px;height:40px;border-top-left-radius: 3px;border-top-right-radius: 3px;position: absolute;left:139px;top:-126px;background:#a5c644; }
+
+	.handL{left:-60px;top:-6px;}
+	.handR{left:230px;top:-6px;}
+	.handL,.handR{width:50px;height:150px;position: absolute;background:#a5c644;border-top-left-radius: 25px;border-top-right-radius: 25px;border-bottom-right-radius: 25px;border-bottom-left-radius: 25px;}
+	.footL{left:40px;top:183px;}
+	.footR{left:129px;top:183px;}
+	.footR,.footL{width:50px;height:80px;position: absolute;background:#a5c644;border-bottom-right-radius: 25px;border-bottom-left-radius: 25px;}
+
+	/*边框*/
+	.bo{width:200px;height:200px;margin-left:500px;background:#eee;
+		border:19px solid transparent ;
+		border-image-source: url(images/2.png);
+		border-image-slice:19 19 19 19;
+		border-image-width:22px;
+		border-image-outset:19px;
+		border-image-repeat: round;
+	}
+	/*八卦*/
+	.tJ{width: 0;height: 400px;position:relative;margin:100px 0 0 100px;border-left: 200px solid #000;border-right: 200px solid #fff;border-radius:50%;}
+	.tJ:before,.tJ:after{position: absolute;content: "";display: block;}
+	.tJ:before{width:200px;height: 200px;top:0;left:-100px;z-index: 1;background: #fff;border-radius: 100%;border:1px solid red;}
+	.tJ:after{width:60px;height: 60px;top:70px;left:-30px;z-index:2px;background: :#fff;border-radius: 100%;border:1px solid red;}
+#yin-yang {
+width: 96px;
+height: 48px;
+background: #eee;
+border-color: red;
+border-style: solid;
+border-width: 2px 2px 50px 2px;
+border-radius: 100%;
+position: relative;
+}
+#yin-yang:before {
+content: "";
+position: absolute;
+top: 50%;
+left: 0;
+background: #eee;
+border: 18px solid red;
+border-radius: 100%;
+width: 12px;
+height: 12px;
+}
+#yin-yang:after {
+content: "";
+position: absolute;
+top: 50%;
+left: 50%;
+background: red;
+border: 18px solid #eee;
+border-radius:100%;
+width: 12px;
+height: 12px;
+} 
+	
+	/*.tJ{width:300px;height:300px;border-radius: 50%;background:red;margin:100px 0 0 100px;position: absolute;}
+	.L{width:150px;height: 150px;border-top-left-radius: 50%;border-top-right-radius: 50%;border-bottom-right-radius: 50%;border-bottom-left-radius: 50%;background:green;position: absolute;left: 0;top:75px;}
+	.R{width:150px;height: 150px;border-radius: 50%;background:red;position: absolute;right: 0;top:75px;}
+*/
+	/*消息框*/
+	.msg{width:200px;height: 100px;background: red;margin:200px 0 0 550px;border-radius: 5%;position: absolute;}
+	.S{width: 0; height: 0;border-top: 15px solid white;border-bottom: 15px solid white;border-left: 15px solid white;border-right: 15px solid red;border-radius: 5%;position: absolute;left:-30px;top:16px;}
+</style>
+</head>
+<body>
+<!--安卓-->
+	<div class="ad">
+		<div class="eyeL"></div>
+		<div class="eyeR"></div>
+	</div>
+	<div class="body">
+		<div class="topL"></div>
+		<div class="topR"></div>
+		<div class="handL"></div>
+		<div class="handR"></div>
+		<div class="footL"></div>
+		<div class="footR"></div>
+	</div>
+	<!--边框-->
+	<div class="bo"></div>
+	<!-- 八卦-->
+	<div class="tJ">
+		<!-- <div class="L"></div>
+		<div class="R"></div> -->
+	</div>
+	<!-- 消息框-->
+	<div class="msg">
+		<div class="S"></div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>running</title>
+	<style>
+		.bg{width:180px;height:300px;background: url(images/charector.png) ;
+			animation: run .5s infinite step-end;}
+		a{text-decoration: none;font-size: 20px;color:#000;margin:20px;}
+		@keyframes run{
+			0%{background-position:0}
+			14.3%{background-position:-180px 0}
+			28.6%{background-position:-360px 0}
+			42.9%{background-position:-540px 0}
+			57.2%{background-position:-720px 0}
+			71.5%{background-position:-900px 0}
+			85.8%{background-position:-1080px 0}
+			100%{background-position:0 0}
+		}
+	</style>
+</head>
+<body>
+	<a href="#" id="fastest">最快</a>
+	<a href="#" id="fast">快</a>
+	<a href="#" id="normal">正常</a>
+	<a href="#" id="slow">慢</a>
+	<a href="#" id="stop">暂停</a>
+	<div class="bg" id="person"></div>
+	<script>
+	var bg=document.getElementById("person")
+	var fas=document.getElementById("fastest")
+	var fa=document.getElementById("fast")
+	var no=document.getElementById("normal")
+	var sl=document.getElementById("slow")
+	var st=document.getElementById("stop")
+	fas.onclick=function(){
+		bg.style.animationDuration="0.3s"
+	}
+	fa.onclick=function(){
+		bg.style.animationDuration="0.5s"
+	}
+	no.onclick=function(){
+		bg.style.animationDuration="1s"
+	}
+	sl.onclick=function(){
+		bg.style.animationDuration="3s"
+	}
+	st.onclick=function(){
+		bg.style.animationDuration="0s"
+	}
+	</script>
+</body>
+</html>

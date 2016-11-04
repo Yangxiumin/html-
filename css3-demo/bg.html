@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pic</title>
+	<style type="text/css">
+		*{ margin: 0; padding: 0; }
+		.cases{ width:100%;color:white; }
+		.cases figure{ width:33.3333%;height:300px;float:left;overflow:hidden;position:relative;}
+		.cases figure>img{ position:absolute;left:0;top:0;opacity:1;transition:all 1s;}
+		.cases figure:hover>img{transform:translateX(-10px);opacity:0.7;}
+
+		.c1 figcaption{ position: absolute; left: 0; bottom: 0; width: 100%; height: 100px; padding-left: 20px; color: #fff; }
+		.c1 figcaption p{ position:absolute;left:20px;bottom:-30px;transition:all 1s; }
+		.c1 figcaption h1{transition: all 1s;}
+		.c1:hover figcaption p{ bottom: 50px; }
+		.c1:hover figcaption h1{ transform:translateY(-10px); }
+
+
+		.c2 figcaption p{ position:absolute;left:100px;transition:all 1s; }
+		.c2 figcaption h1{transition: all 1s;position:absolute;left:50px;top:30px;}
+		/*.c2:hover figcaption p{ bottom: 50px; }*/
+		.c2:hover figcaption h1{ transform:translateY(-10px); }
+		
+		.c5>div{ position:absolute;left:10%;top:10%; width:80%;height:80%;border:1px solid black; 
+			transform-origin: left 50% top;
+			transform: translate(-300%,-200%) rotate(-720deg);
+			transition: all 0.5s;
+		}
+		.c5 figcaption p{ transition:all 0.5s; }
+		.c5 figcaption h1{position:absolute;left:20px;top:30px;transition: all 0.5s;}
+		.c5:hover figcaption p{ transform:translateY(-60px); }
+		.c5:hover figcaption h1{ transform:translateX(60px); }
+		.c5:hover>div{
+			transform: translate(0, 0) rotate(0);
+		}
+
+		.c8 .boxX{position:absolute;left:11%;top:19%;width:70%;height:60%;border:1px solid white;border-left:none;border-right:none;transform:scaleX(0);transition:all 2s;}
+		.c8 .boxY{position:absolute;left:16%;top:15%;width:60%;height:70%;border:1px solid white;border-top:none;border-bottom:none;transform:scaleY(0);transition:all 2s;}
+		.c8:hover .boxX{transform:scaleX(1);}
+		.c8:hover .boxY{transform:scaleY(1) ;}
+
+		.c8 figcaption p{ position:absolute;left:90px;top:150px;transition:all 1s; }
+		.c8 figcaption h1{position:absolute;left:60px;top:100px;transition: all 1s;}
+		.c8:hover figcaption p{ transform:translateY(-10px); }
+		.c8:hover figcaption h1{ transform:translateX(30px); }
+
+
+	</style>
+</head>
+<body>
+	<div class="cases">
+		<figure class="c1">
+			<img src="images/pic1.jpg" alt="">
+			<figcaption>
+				<h1>平移动画1</h1>
+				<p>最简单的平移动画</p>
+			</figcaption>
+		</figure>
+		
+		<figure class="c2">
+			<img src="images/pic2.jpg" alt="">
+			<figcaption>
+				<h1>平移动画2</h1>
+				<span>最简单的平移动画</span>
+				<span>最简单的平移动画</span>
+				<span>最简单的平移动画</span>
+			</figcaption>
+		</figure>
+
+		<figure class="c5">
+			<img src="images/pic5.jpg" alt="">
+			<figcaption>
+				<h1>旋转飞入飞出</h1>
+				<p>旋转飞入飞出旋转飞入飞出</p>
+			</figcaption>
+			<div></div>
+		</figure>
+		
+
+		<figure class="c8">
+			<img src="images/pic8.jpg" alt="">
+			<figcaption>
+				<h1>绘制线条效果</h1>
+				<p>通过缩放绘制线条</p>
+			</figcaption>
+			<div class="boxX"></div>
+			<div class="boxY"></div>
+		</figure>
+	</div>
+</body>
+</html>
